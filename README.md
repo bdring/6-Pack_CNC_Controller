@@ -1,5 +1,7 @@
 # 6-Pack Grbl_ESP32 CNC Controller
 
+![](http://www.buildlog.net/blog/wp-content/uploads/2020/05/20200529_082652-scaled.jpg)
+
 ### Overview
 
 This is an experimental controller primarily deigned to test the use of I2C Shift Registers to add additional digital outputs.
