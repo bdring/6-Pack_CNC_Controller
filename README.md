@@ -1,31 +1,25 @@
 # 6-Pack Grbl_ESP32 CNC Controller
 
-![image](http://www.buildlog.net/blog/wp-content/uploads/2020/06/20200618_132326-scaled.jpg)
+![image](https://github.com/bdring/6-Pack_CNC_Controller/blob/master/images/20200711_120633.jpg)
 
-![image](https://user-images.githubusercontent.com/189677/85073217-0372b200-b180-11ea-99b6-4b685298abdd.png)
+![image](https://github.com/bdring/6-Pack_CNC_Controller/blob/master/images/20200711_120737.jpg)
 
 ### Overview
 
-This is an experimental controller primarily deigned to test the use of I2S Shift Registers to add additional digital outputs.
-
-**Note:** This is not recommended for use in the current revision. Some changes are planned that will vastly improve the functionality
+This is a fully modular CNC controller that runs Grbl_ESP32 firmware.
 
 ### Features
 
 - ESP32 Sockets to fit both narrow and wide 2 x 19 pin types.
-- 6 Stepper Driver Outputs. These can be used for 6 axes (XYZABC) or any two can be ganged to allow dual motors on a single axis. These ganged motors can be controlled independently for axis squaring. It supports these types of drivers. Each driver has an independent enable/disable pin.
-  - Standard StepStick style driver modules (see limitations)
+- (6) Stepper Driver Outputs. These can be used for 6 axes (XYZABC) or any (2) can be ganged to allow dual motors on a single axis. These ganged motors can be controlled independently for axis squaring. It supports these types of drivers. Each driver has an independent enable/disable pin.
+  - Standard Pololu/StepStick style driver modules.
   - Trinamic SPI type drivers. These are the ultra quiet types with sensorless endstop capability.
   - External Driver with 5V opto isolators.
-- 2 Spindle modules. This is a new concept being tested that allows great flexibility. One could be used for a spindle and the other could be used to control a vacuum, coolant, etc.  Each socket has access to 4 I/O pins. The following modules are planned.
+(5) CNC I/O Modules. These interface with your machine. They include, but are not limited to, siwtch inputs, spindle control and accessory control. Currently there are (5) modules available.
   - High current AC/DC relay
-  - 5V Laser PWM
-  - RS485 Modbus
-  - 0-10V output
-  - High current DC MOSFET.
+  - 4x 5V Buffered output for lasers, PWM, spindle direction, spindle enable, ect.
+  - RS485 Modbus Spindles
+  - 0-10V Output Spindles
+  - 4x Switch input with Optocouplers, filtering and Schmitt triggers. 
 - SD Card Socket
-- JTAG Programming/Debugging connector (or access to addition I/O pins)
-- Limit switch connector
-- Probe connector
-- 2 fan connectors 5V or motor voltage
-- 8 spare output pins.
+- JTAG Programming/Debugging connector (or access to addition I/O pins
