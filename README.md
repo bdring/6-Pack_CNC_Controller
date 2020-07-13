@@ -1,8 +1,8 @@
 # 6-Pack Grbl_ESP32 CNC Controller
 
-![image](https://github.com/bdring/6-Pack_CNC_Controller/blob/master/images/20200711_120633.jpg)
+<img src="https://github.com/bdring/6-Pack_CNC_Controller/blob/master/images/20200711_120633.jpg" width="600">
 
-![image](https://github.com/bdring/6-Pack_CNC_Controller/blob/master/images/20200711_120737.jpg)
+<img src="https://github.com/bdring/6-Pack_CNC_Controller/blob/master/images/20200711_120737.jpg" width="600">
 
 ### Overview
 
