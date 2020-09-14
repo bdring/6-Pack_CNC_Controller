@@ -1,0 +1,8 @@
+"RefDes","Value","Name","Quantity","Manufacturer","MFG P/N"
+"LED1, LED2, LED3, LED4","GRN","LED_GRN_0805","4","Lite-On","LTST-C170KGKT"
+"MOD1","1x12 P","CNC_Module_Pins","1","CJT(Changjiang Connectors)","A2541WV-12P"
+"Q1, Q2, Q3, Q4","42V 10A","NCV8403A","4","On Semiconductor","NCV8403A"
+"R1, R2, R3, R4","300R","300R_0603","4","YAGEO","RC0603FR-07330RL"
+"R5","10R","10R_0805","1","YAGEO","RC0805FR-0710RL"
+"TB1","8 Pos","TB_3p5mm_8POS_PHOENIX_1945151","1","Phoenix contact","1945151"
+"TB2","2 Pos","TB_3.5mm_2POS_SOCKET_VERT","1","Ningbo Xinlaiya Elec","XY2500R-B-5.00-2P"
