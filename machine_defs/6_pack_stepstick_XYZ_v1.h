@@ -27,7 +27,7 @@
 #ifdef N_AXIS
         #undef N_AXIS
 #endif
-#define N_AXIS 4
+#define N_AXIS 3
 
 #ifdef ENABLE_SD_CARD
     #undef ENABLE_SD_CARD
@@ -41,12 +41,7 @@
 #ifdef HOMING_CYCLE_1
     #undef HOMING_CYCLE_1
 #endif
-#define HOMING_CYCLE_1 bit(A_AXIS)
-
-#ifdef HOMING_CYCLE_2
-    #undef HOMING_CYCLE_2
-#endif
-#define HOMING_CYCLE_2 (bit(X_AXIS)|bit(Y_AXIS))
+#define HOMING_CYCLE_1 (bit(X_AXIS)|bit(Y_AXIS))
 
 // === Special Features
 
@@ -84,10 +79,7 @@
 #define Z_DIRECTION_PIN         I2SO(9)
 #define Z_STEP_PIN              I2SO(10)
 
-// Servo in socket #4
-#define A_SERVO_PIN             GPIO_NUM_14
-#define A_SERVO_RANGE_MIN       1.00
-#define A_SERVO_RANGE_MAX       1.00
+
 
 
 /*
