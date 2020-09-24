@@ -100,7 +100,7 @@
 // unused switch #4
 
 // Relay in module #3
-#define SPINDLE_TYPE            SPINDLE_TYPE_RELAY
+#define SPINDLE_TYPE            SpindleType::RELAY
 #define SPINDLE_OUTPUT_PIN      GPIO_NUM_26
 
 // 5V Output in module #4

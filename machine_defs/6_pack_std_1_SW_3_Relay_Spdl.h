@@ -152,7 +152,7 @@
 
 // Socket 3 Relay
 #define SPINDLE_OUTPUT_PIN      GPIO_NUM_26
-#define SPINDLE_TYPE            SPINDLE_TYPE_RELAY
+#define SPINDLE_TYPE            SpindleType::RELAY
 
 
 

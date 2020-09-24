@@ -126,7 +126,7 @@
 
 
 // 5V output CNC module in socket #3
-#define SPINDLE_TYPE            SPINDLE_TYPE_PWM
+#define SPINDLE_TYPE            SpindleType::PWM
 #define SPINDLE_OUTPUT_PIN      GPIO_NUM_26
 #define SPINDLE_ENABLE_PIN      GPIO_NUM_4
 #define SPINDLE_DIR_PIN         GPIO_NUM_16

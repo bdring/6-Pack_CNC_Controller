@@ -94,7 +94,7 @@
 #define PROBE_PIN               GPIO_NUM_34
 
 // Relay in Socket #3
-#define SPINDLE_TYPE            SPINDLE_TYPE_RELAY
+#define SPINDLE_TYPE            SpindleType::RELAY
 #define SPINDLE_OUTPUT_PIN      GPIO_NUM_26
 
 // === Default settings

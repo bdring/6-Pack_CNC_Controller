@@ -125,7 +125,7 @@
 #define PROBE_PIN               GPIO_NUM_34
 
 // when used in socket #3
-#define SPINDLE_TYPE            SPINDLE_TYPE_10V
+#define SPINDLE_TYPE            SpindleType::_10V
 #define SPINDLE_OUTPUT_PIN      GPIO_NUM_26
 #define SPINDLE_FORWARD_PIN     GPIO_NUM_4
 #define SPINDLE_REVERSE_PIN     GPIO_NUM_16

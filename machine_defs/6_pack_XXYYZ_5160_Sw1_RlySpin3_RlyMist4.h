@@ -128,7 +128,7 @@
 
 
 // Relay module as spindle on CNC I/O Module socket #3
-#define SPINDLE_TYPE            SPINDLE_TYPE_RELAY // default, check actual $Spindle/Type Setting
+#define SPINDLE_TYPE            SpindleType::RELAY // default, check actual $Spindle/Type Setting
 #define SPINDLE_OUTPUT_PIN      GPIO_NUM_26 // relay as spindle on module socket #3
 
 // Relay module as Mist on CNC I/O Module socket #4
