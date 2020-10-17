@@ -106,15 +106,15 @@ Socket #5
 
 // Relay module as Mist on CNC I/O Module socket #2
 // https://github.com/bdring/6-Pack_CNC_Controller/wiki/Relay-Module
-#define COOLANT_MIST_PIN  GPIO_NUM_2 // Relay for Mist on module socket #4
+#define COOLANT_MIST_PIN  GPIO_NUM_2 // Relay for Mist Coolant on module socket #2
 
 // Relay module as Mist on CNC I/O Module socket #3
 // https://github.com/bdring/6-Pack_CNC_Controller/wiki/Relay-Module
-#define COOLANT_FLOOD_PIN  GPIO_NUM_26 // Relay for Mist on module socket #4
+#define COOLANT_FLOOD_PIN  GPIO_NUM_26 // Relay for Flood Coolant on module socket #3
 
 // Relay module as Mist on CNC I/O Module socket #4
 // https://github.com/bdring/6-Pack_CNC_Controller/wiki/Relay-Module
-#define USER_DIGITAL_PIN_0  GPIO_NUM_14 // Relay for Mist on module socket #4
+#define USER_DIGITAL_PIN_0  GPIO_NUM_14 // Relay for M62 P0 and M63 P0 on module socket #4
 
 // === Default settings
 #define DEFAULT_STEP_PULSE_MICROSECONDS I2S_OUT_USEC_PER_PULSE
