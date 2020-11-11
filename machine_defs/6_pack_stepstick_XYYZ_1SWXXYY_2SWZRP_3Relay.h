@@ -2,15 +2,15 @@
 // clang-format off
 
 /*
-    6_pack_Shapeoko3_stepstick_XYYZ_1SW_XYYZ.h
+    6_pack_stepstick_XYYZ_1SWXXYY_2SWZRP_3Relay.h
 
     Covers all V1 versions V1p0, V1p1, etc
 
     Part of Grbl_ESP32
     Pin assignments for the ESP32 I2S 6-axis board
-   
-    2020-11-02 B. Dring for Jason C.
-   
+    
+    2020-11-11 B. Dring for Jeff B.
+
     Grbl_ESP32 is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -22,9 +22,9 @@
     You should have received a copy of the GNU General Public License
     along with Grbl_ESP32.  If not, see <http://www.gnu.org/licenses/>.
 */
-#define MACHINE_NAME            "6 Pack ShapeOko 3 XYZP"
+#define MACHINE_NAME            "6 Pack StepStick XYYZ 1SWXXYY 2SWZRP 3Relay"
 
-#define N_AXIS 4
+#define N_AXIS 3
 
 // === Special Features
 
@@ -53,15 +53,15 @@
 #define Y_DISABLE_PIN           I2SO(7)
 
 // Motor Socket #3
-#define Y2_DISABLE_PIN          I2SO(8)
-#define Y2_DIRECTION_PIN        I2SO(9)
-#define Y2_STEP_PIN             I2SO(10)
-#define Y2_STEPPER_MS3          I2SO(11)
+#define Y2_DISABLE_PIN           I2SO(8)
+#define Y2_DIRECTION_PIN         I2SO(9)
+#define Y2_STEP_PIN              I2SO(10)
+#define Y2_STEPPER_MS3           I2SO(11)
 
 // Motor Socket #4
 #define Z_DIRECTION_PIN         I2SO(12)
 #define Z_STEP_PIN              I2SO(13)
-#define Z_STEPPER_MS3           I2SO(14)
+#define Z_STEPPER_MS3           I2SO(14) 
 #define Z_DISABLE_PIN           I2SO(15)
 
 
@@ -76,21 +76,31 @@
 // 4x Input Module in Socket #1
 // https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-Switch-Input-module
 #define X_LIMIT_PIN             GPIO_NUM_33
-#define Y_LIMIT_PIN             GPIO_NUM_32
-#define Z_LIMIT_PIN             GPIO_NUM_35
-#define PROBE_PIN               GPIO_NUM_34
+#define X2_LIMIT_PIN            GPIO_NUM_32
+#define Y_LIMIT_PIN             GPIO_NUM_35
+#define Y2_LIMIT_PIN            GPIO_NUM_34
 
-#define DEFAULT_INVERT_LIMIT_PINS       0   // for mechanical switches
+#define DEFAULT_INVERT_LIMIT_PINS       0  // Sets the default for N.O. switches
 
+// 4x Switch Input module  in socket #2
+// https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-Switch-Input-module
+#define Z_LIMIT_PIN             GPIO_NUM_2
+#define Z2_LIMIT_PIN            GPIO_NUM_25
+#define CONTROL_RESET_PIN       GPIO_NUM_39
+#define PROBE_PIN               GPIO_NUM_36
+
+#ifdef INVERT_CONTROL_PIN_MASK
+#undef INVERT_CONTROL_PIN_MASK
+#endif 
+
+#define INVERT_CONTROL_PIN_MASK B0 //  Cycle Start | Feed Hold | Reset | Safety Door
+
+#define DEFAULT_INVERT_PROBE_PIN        0
 
 // Relay module in socket #3
 // https://github.com/bdring/6-Pack_CNC_Controller/wiki/Relay-Module
 #define SPINDLE_TYPE            SpindleType::RELAY
 #define SPINDLE_OUTPUT_PIN      GPIO_NUM_26
-
-// Relay CNC module in socket #3
-// https://github.com/bdring/6-Pack_CNC_Controller/wiki/Relay-Module
-#define COOLANT_MIST_PIN        GPIO_NUM_14
 
 // === Default settings
 #define DEFAULT_STEP_PULSE_MICROSECONDS I2S_OUT_USEC_PER_PULSE
