@@ -24,12 +24,11 @@
 */
 #define MACHINE_NAME            "6 Pack Ant"
 
-#define N_AXIS 3
+#define N_AXIS 4
 
 #define CUSTOM_CODE_FILENAME    "../Custom/CoreXY.cpp"
 
 #define USE_KINEMATICS      // there are kinematic equations for this machine
-#define USE_FWD_KINEMATICS  // report in cartesian
 #define USE_MACHINE_INIT    // There is some custom initialization for this machine
 #define USE_CUSTOM_HOMING
 
@@ -66,6 +65,12 @@
 #define Z_STEP_PIN              I2SO(10)
 #define Z_STEPPER_MS3           I2SO(11) 
 
+// Motor Socket #4
+#define A_DIRECTION_PIN         I2SO(12)
+#define A_STEP_PIN              I2SO(13)
+#define A_STEPPER_MS3           I2SO(14) 
+#define A_DISABLE_PIN           I2SO(15)
+
 /*
     Socket I/O reference
     The list of modules is here...
@@ -79,8 +84,24 @@
 #define X_LIMIT_PIN                 GPIO_NUM_33
 #define Y_LIMIT_PIN                 GPIO_NUM_32
 #define Z_LIMIT_PIN                 GPIO_NUM_35
+#define A_LIMIT_PIN                 GPIO_NUM_34
 
 // ================= Setting Defaults ==========================
-#define DEFAULT_X_STEPS_PER_MM      800
-#define DEFAULT_Y_STEPS_PER_MM      800
-#define DEFAULT_Z_STEPS_PER_MM      800
+// https://github.com/bdring/Grbl_Esp32/wiki/Setting-Defaults
+#define DEFAULT_X_STEPS_PER_MM      200
+#define DEFAULT_Y_STEPS_PER_MM      200
+#define DEFAULT_Z_STEPS_PER_MM      200
+
+#define DEFAULT_X_MAX_RATE          5000
+#define DEFAULT_Y_MAX_RATE          5000
+#define DEFAULT_Z_MAX_RATE          5000
+
+#define DEFAULT_DIRECTION_INVERT_MASK   (bit(X_AXIS) || bit(Y_AXIS))
+#define DEFAULT_INVERT_LIMIT_PINS       0
+
+#define DEFAULT_HOMING_ENABLE       1
+#define DEFAULT_HOMING_CYCLE_0      bit(Z_AXIS)
+#define DEFAULT_HOMING_CYCLE_1      bit(X_AXIS)
+#define DEFAULT_HOMING_CYCLE_2      bit(Y_AXIS)
+
+#define DEFAULT_HOMING_DIR_MASK     0

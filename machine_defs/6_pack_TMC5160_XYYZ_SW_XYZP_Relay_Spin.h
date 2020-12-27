@@ -19,7 +19,7 @@
     You should have received a copy of the GNU General Public License
     along with Grbl_ESP32.  If not, see <http://www.gnu.org/licenses/>.
 */
-#define MACHINE_NAME            "6 Pack Controller V1 (Trinamic Stallguard)"
+#define MACHINE_NAME            "6 Pack Richard R. (SupRichie)"
 
 #define N_AXIS 3
 
@@ -90,10 +90,12 @@
 #define SPINDLE_TYPE            SpindleType::RELAY // default, check actual $Spindle/Type Setting
 #define SPINDLE_OUTPUT_PIN      GPIO_NUM_2 // relay as spindle on module socket #2
 
-
 // Example 5V output CNC module in socket #3
 // https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-5V-Buffered-Output-Module
-// Not used yet
+#define LASER_OUTPUT_PIN      GPIO_NUM_4  // 1st channel
+#define COOLANT_MIST_PIN      GPIO_NUM_14 
+#define COOLANT_FLOOD_PIN     GPIO_NUM_27
+
 
 // RS485 Modbus In socket #4
 // https://github.com/bdring/6-Pack_CNC_Controller/wiki/RS485-Modbus-Module
