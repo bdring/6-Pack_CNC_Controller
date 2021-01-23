@@ -2,14 +2,14 @@
 // clang-format off
 
 /*
-    6_pack_stepstick_v1.h
+    6_pack_external_XYZA_10vSpin_RelayMist.h
 
     Covers all V1 versions V1p0, V1p1, etc
 
     Part of Grbl_ESP32
     Pin assignments for the ESP32 I2S 6-axis board
-    
-    
+   
+    2021-01-02 B. Dring for Wayne B.
 
     Grbl_ESP32 is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,9 +22,9 @@
     You should have received a copy of the GNU General Public License
     along with Grbl_ESP32.  If not, see <http://www.gnu.org/licenses/>.
 */
-#define MACHINE_NAME            "6 Pack Controller V1 (StepStick)"
+#define MACHINE_NAME            "6 Pack External XYZA 10vSpin Mist"
 
-#define N_AXIS 6
+#define N_AXIS 4
 
 // === Special Features
 
@@ -64,17 +64,17 @@
 #define A_STEPPER_MS3           I2SO(14) 
 #define A_DISABLE_PIN           I2SO(15)
 
-// Motor Socket #5
-#define B_DISABLE_PIN           I2SO(16)
-#define B_DIRECTION_PIN         I2SO(17)
-#define B_STEP_PIN              I2SO(18)
-#define B_STEPPER_MS3           I2SO(19) 
+// // Motor Socket #5
+// #define B_DISABLE_PIN           I2SO(16)
+// #define B_DIRECTION_PIN         I2SO(17)
+// #define B_STEP_PIN              I2SO(18)
+// #define B_STEPPER_MS3           I2SO(19) 
 
-// Motor Socket #5
-#define C_DIRECTION_PIN         I2SO(20)
-#define C_STEP_PIN              I2SO(21)
-#define C_STEPPER_MS3           I2SO(22)
-#define C_DISABLE_PIN           I2SO(23)
+// // Motor Socket #5
+// #define C_DIRECTION_PIN         I2SO(20)
+// #define C_STEP_PIN              I2SO(21)
+// #define C_STEPPER_MS3           I2SO(22)
+// #define C_DISABLE_PIN           I2SO(23)
 
 
 /*
@@ -82,7 +82,6 @@
     The list of modules is here...
     https://github.com/bdring/6-Pack_CNC_Controller/wiki/CNC-I-O-Module-List
     Click on each module to get example for using the modules in the sockets
-
 
 */
 
@@ -93,8 +92,19 @@
 #define Z_LIMIT_PIN             GPIO_NUM_35
 #define A_LIMIT_PIN             GPIO_NUM_34
 
-#define DEFAULT_INVERT_LIMIT_PINS       0
+#define DEFAULT_INVERT_LIMIT_PINS       0  // Sets the default for N.O. switches
 
+
+// when used in socket #3
+// https://github.com/bdring/6-Pack_CNC_Controller/wiki/0-10V-Output-Module
+#define SPINDLE_TYPE            SpindleType::_10V// default, check actual $Spindle/Type Setting
+#define SPINDLE_OUTPUT_PIN      GPIO_NUM_26
+#define SPINDLE_FORWARD_PIN     GPIO_NUM_4
+#define SPINDLE_REVERSE_PIN     GPIO_NUM_16
+
+// https://github.com/bdring/6-Pack_CNC_Controller/wiki/Relay-Module
+// Relay module as Mist on CNC I/O Module socket #4
+#define COOLANT_MIST_PIN        GPIO_NUM_14 // Relay for Mist on module socket #4
 
 // === Default settings
 #define DEFAULT_STEP_PULSE_MICROSECONDS I2S_OUT_USEC_PER_PULSE
