@@ -9,7 +9,7 @@
     Part of Grbl_ESP32
     Pin assignments for the ESP32 I2S 6-axis board
 
-    2021-01-23 B. Dring for Atam A.
+    2021-01-23 B. Dring for Adam A.
 
     Grbl_ESP32 is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
