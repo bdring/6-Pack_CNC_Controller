@@ -23,3 +23,7 @@ This is a fully modular CNC controller that runs Grbl_ESP32 firmware.
   - 4x Switch input with Optocouplers, filtering and Schmitt triggers. 
 - SD Card Socket
 - JTAG Programming/Debugging connector (or access to addition I/O pins
+
+
+[<img src="https://github.com/bdring/TMC2209_4x_DK/blob/main/images/tindie-logo.png" width="160">](https://www.tindie.com/products/33366583/6-pack-universal-cnc-controller/)
+
