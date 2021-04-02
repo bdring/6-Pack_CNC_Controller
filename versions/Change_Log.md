@@ -1,5 +1,12 @@
 ## 6 Pack CNC Controller PCB Change Log
 
+### V1.8
+
+-  Changed the power supply to the latest chip I have been using that is usually available on JLC. TI p/n TPS54360 LCSC P/N C44377
+- Added an expansion port on the upper right corner. This has no immediate use, but I think it could prove useful in the future.
+- Changed stepper motor terminal block type. The version 1.5 one can be difficult to get and has caused delays.
+- Added a pull down resistor on the I2S clock signal. This mitigates startup pulses on some I2SO pins.
+
 ### V1.5
 
 -  Change 5V power supply from MSP MP1584EN to Diodes Inc AP64350SP-13 
