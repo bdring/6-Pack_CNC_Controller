@@ -65,7 +65,7 @@
 // Motor Socket #4
 #define Z_DIRECTION_PIN         I2SO(12)
 #define Z_STEP_PIN              I2SO(13)
-#define z_DISABLE_PIN           I2SO(15)
+#define Z_DISABLE_PIN           I2SO(15)
 
 /*
 // Motor Socket #5
