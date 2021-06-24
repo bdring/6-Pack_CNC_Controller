@@ -58,7 +58,7 @@
 #define Y_DISABLE_PIN           I2SO(7)
 
 // Motor Socket #3
-#define Y2DISABLE_PIN           I2SO(8)
+#define Y2_DISABLE_PIN           I2SO(8)
 #define Y2_DIRECTION_PIN        I2SO(9)
 #define Y2_STEP_PIN             I2SO(10)
 
