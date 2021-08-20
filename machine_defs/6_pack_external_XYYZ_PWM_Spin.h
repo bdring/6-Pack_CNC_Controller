@@ -2,14 +2,14 @@
 // clang-format off
 
 /*
-    6_pack_external_XYYZ_RS485_Laser_Mist.h
+    6_pack_external_XYYZ_PWM_Spin.h
 
     Covers all V1 versions V1p0, V1p1, etc
 
     Part of Grbl_ESP32
     Pin assignments for the ESP32 I2S 6-axis board
     
-    2021-08-02 B. Dring for Jim Mires
+    2021-08-11 B. Dring for Robert Kulka
 
     Grbl_ESP32 is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
     You should have received a copy of the GNU General Public License
     along with Grbl_ESP32.  If not, see <http://www.gnu.org/licenses/>.
 */
-#define MACHINE_NAME            "6 Pack External XYYZ RS485 Mist"
+#define MACHINE_NAME            "6 Pack External XYYZ PWM Spindle"
 
 #define N_AXIS 3
 
@@ -111,35 +111,20 @@ Socket #5
 
 // 4x Switch Input module  in socket #2
 // // https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-Switch-Input-module
-#define PROBE_PIN                     GPIO_NUM_2
-#define CONTROL_FEED_HOLD_PIN         GPIO_NUM_25
-#define CONTROL_CYCLE_START_PIN       GPIO_NUM_39
-///#define    TBD  GPIO_NUM_36
+#define PROBE_PIN           GPIO_NUM_2
+//#define CONTROL_CYCLE_START_PIN     GPIO_NUM_39
+//#define CONTROL_SAFETY_DOOR_PIN     GPIO_NUM_36
 
-// RS485 Modbus In socket #3
-// https://github.com/bdring/6-Pack_CNC_Controller/wiki/RS485-Modbus-Module
-#define SPINDLE_TYPE            SpindleType::HUANYANG // default, check actual $Spindle/Type Setting
-#define VFD_RS485_TXD_PIN        GPIO_NUM_26
-#define VFD_RS485_RTS_PIN        GPIO_NUM_4
-#define VFD_RS485_RXD_PIN        GPIO_NUM_16
-
-// 5V output CNC module in socket #4
+// Example 5V output CNC module in socket #3
 // https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-5V-Buffered-Output-Module
-#define LASER_OUTPUT_PIN          GPIO_NUM_14
-#define LASER_ENABLE_PIN          GPIO_NUM_13 // optional 
-#define COOLANT_MIST_PIN          GPIO_NUM_15
-#define COOLANT_FLOOD_PIN         GPIO_NUM_12
+#define SPINDLE_TYPE            SpindleType::PWM
+#define SPINDLE_OUTPUT_PIN      GPIO_NUM_26  // 1st channel
+#define SPINDLE_ENABLE_PIN      GPIO_NUM_4   // 2nd channel
+#define SPINDLE_DIR_PIN         GPIO_NUM_16  // 3rd channel
+#define COOLANT_MIST_PIN        GPIO_NUM_27  // M7 on M9 Off
 
 
 // === Default settings
 #define DEFAULT_STEP_PULSE_MICROSECONDS I2S_OUT_USEC_PER_PULSE
-
-#define DEFAULT_INVERT_LIMIT_PINS       0
-#define DEFAULT_INVERT_PROBE_PIN        0
-
-#ifdef INVERT_CONTROL_PIN_MASK
-#    undef INVERT_CONTROL_PIN_MASK
-#endif
-#define INVERT_CONTROL_PIN_MASK B0001
 
 #define DEFAULT_INVERT_LIMIT_PINS       0
