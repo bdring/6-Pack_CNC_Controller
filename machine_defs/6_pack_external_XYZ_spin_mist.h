@@ -9,7 +9,7 @@
     Part of Grbl_ESP32
     Pin assignments for the ESP32 I2S 6-axis board
 
-    2021-09-17    - Bart Dring for Mark Chambers
+    2021-09-14    - Bart Dring for Jon Gough
     
     Grbl_ESP32 is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -122,26 +122,26 @@ Socket #5
 
 // 4x Input Module in Socket #1
 // https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-Switch-Input-module
-#define X_LIMIT_PIN                 GPIO_NUM_33
-#define X2_LIMIT_PIN                GPIO_NUM_32
-#define Y_LIMIT_PIN                 GPIO_NUM_35
-#define Y2_LIMIT_PIN                GPIO_NUM_34
+#define X_LIMIT_PIN                     GPIO_NUM_33
+#define X2_LIMIT_PIN                    GPIO_NUM_32
+#define Y_LIMIT_PIN                     GPIO_NUM_35
+#define Y2_LIMIT_PIN                    GPIO_NUM_34
 
 // 4x Switch Input module  in socket #2
 // // https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-Switch-Input-module
-#define PROBE_PIN           GPIO_NUM_2
-//#define CONTROL_FEED_HOLD_PIN       GPIO_NUM_25
-//#define CONTROL_CYCLE_START_PIN     GPIO_NUM_39
-//#define CONTROL_SAFETY_DOOR_PIN     GPIO_NUM_36
+#define Z_LIMIT_PIN                     GPIO_NUM_2
+#define PROBE_PIN                       GPIO_NUM_25
+#define CONTROL_CYCLE_START_PIN         GPIO_NUM_39
+#define CONTROL_FEED_HOLD_PIN           GPIO_NUM_36
 
-// Example 5V output CNC module in socket #3
-// https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-5V-Buffered-Output-Module
-#define SPINDLE_TYPE            SpindleType::PWM
-#define SPINDLE_OUTPUT_PIN      GPIO_NUM_26  // 1st channel
-#define SPINDLE_ENABLE_PIN      GPIO_NUM_4   // 2nd channel
-#define COOLANT_MIST_PIN         GPIO_NUM_16  // 3rd channel
-#define COOLANT_FLOOD_PIN        GPIO_NUM_27  // M7 on M9 Off
+// Relay module as spindle on CNC I/O Module socket #3
+// https://github.com/bdring/6-Pack_CNC_Controller/wiki/Relay-Module
+#define SPINDLE_TYPE            SpindleType::RELAY // default, check actual $Spindle/Type Setting
+#define SPINDLE_OUTPUT_PIN      GPIO_NUM_26 // relay as spindle on module socket #3
 
+// https://github.com/bdring/6-Pack_CNC_Controller/wiki/Relay-Module
+// Relay module as Mist on CNC I/O Module socket #4
+#define COOLANT_MIST_PIN  GPIO_NUM_14 // Relay for Mist on module socket #4
 
 // ================= Setting Defaults ==========================
 
@@ -157,5 +157,8 @@ Socket #5
 #define DEFAULT_INVERT_LIMIT_PINS       0
 #define DEFAULT_INVERT_PROBE_PIN        0
 
-
+#ifdef INVERT_CONTROL_PIN_MASK
+#    undef INVERT_CONTROL_PIN_MASK
+#endif
+#define INVERT_CONTROL_PIN_MASK B0000
 

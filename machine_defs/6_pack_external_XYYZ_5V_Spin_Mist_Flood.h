@@ -2,14 +2,14 @@
 // clang-format off
 
 /*
-    6_pack_external_XYZ.h
+    6_pack_external_XYYZ_5V_Spin_Laser_Mist.h
 
     Covers all V1 versions V1p0, V1p1, etc
 
     Part of Grbl_ESP32
     Pin assignments for the ESP32 I2S 6-axis board
 
-    2021-09-17    - Bart Dring for Mark Chambers
+    2021-10-05    - Bart Dring for Mike Hales
     
     Grbl_ESP32 is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
 
 
 */
-#define MACHINE_NAME            "6 Pack External XYZ"
+#define MACHINE_NAME            "6 Pack External XYYZ"
 
 #define N_AXIS 3
 
@@ -58,16 +58,17 @@
 #define Y_DISABLE_PIN           I2SO(7)
 
 // Motor Socket #3
-#define Z_DISABLE_PIN           I2SO(8)
-#define Z_DIRECTION_PIN         I2SO(9)
-#define Z_STEP_PIN              I2SO(10)
+#define Y2_DISABLE_PIN           I2SO(8)
+#define Y2_DIRECTION_PIN         I2SO(9)
+#define Y2_STEP_PIN              I2SO(10)
+
+
+// Motor Socket #4
+#define Z_DIRECTION_PIN         I2SO(12)
+#define Z_STEP_PIN              I2SO(13)
+#define Z_DISABLE_PIN           I2SO(15)
 
 /*
-// Motor Socket #4
-#define A_DIRECTION_PIN         I2SO(12)
-#define A_STEP_PIN              I2SO(13)
-#define A_DISABLE_PIN           I2SO(15)
-
 // Motor Socket #5
 #define B_DISABLE_PIN           I2SO(16)
 #define B_DIRECTION_PIN         I2SO(17)
@@ -123,25 +124,22 @@ Socket #5
 // 4x Input Module in Socket #1
 // https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-Switch-Input-module
 #define X_LIMIT_PIN                 GPIO_NUM_33
-#define X2_LIMIT_PIN                GPIO_NUM_32
-#define Y_LIMIT_PIN                 GPIO_NUM_35
-#define Y2_LIMIT_PIN                GPIO_NUM_34
+#define X2_LIMIT_PIN                 GPIO_NUM_32
+#define Y_LIMIT_PIN                GPIO_NUM_35
+#define Y2_LIMIT_PIN                 GPIO_NUM_34
 
 // 4x Switch Input module  in socket #2
 // // https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-Switch-Input-module
-#define PROBE_PIN           GPIO_NUM_2
-//#define CONTROL_FEED_HOLD_PIN       GPIO_NUM_25
-//#define CONTROL_CYCLE_START_PIN     GPIO_NUM_39
-//#define CONTROL_SAFETY_DOOR_PIN     GPIO_NUM_36
+#define Z_LIMIT_PIN           GPIO_NUM_2
+#define PROBE_PIN             GPIO_NUM_25
 
-// Example 5V output CNC module in socket #3
+// Example 5V output CNC module in socket #4
 // https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-5V-Buffered-Output-Module
-#define SPINDLE_TYPE            SpindleType::PWM
-#define SPINDLE_OUTPUT_PIN      GPIO_NUM_26  // 1st channel
-#define SPINDLE_ENABLE_PIN      GPIO_NUM_4   // 2nd channel
-#define COOLANT_MIST_PIN         GPIO_NUM_16  // 3rd channel
-#define COOLANT_FLOOD_PIN        GPIO_NUM_27  // M7 on M9 Off
-
+#define SPINDLE_TYPE             SpindleType::PWM
+#define SPINDLE_OUTPUT_PIN       GPIO_NUM_14  // 1st channel
+#define SPINDLE_ENABLE_PIN       GPIO_NUM_13   // 2nd channel
+#define COOLANT_MIST_PIN         GPIO_NUM_15  // 3rd channel
+#define COOLANT_FLOOD_PIN        GPIO_NUM_12  // M7 on M9 Off
 
 // ================= Setting Defaults ==========================
 
@@ -154,8 +152,6 @@ Socket #5
 #define DEFAULT_DIRECTION_INVERT_MASK    (bit(X_AXIS) | bit(Y_AXIS) | bit(Z_AXIS))
 #define DEFAULT_INVERT_ST_ENABLE         false
 
-#define DEFAULT_INVERT_LIMIT_PINS       0
-#define DEFAULT_INVERT_PROBE_PIN        0
+#define DEFAULT_INVERT_LIMIT_PINS       0  // Sets the default for N.O. switches
 
-
-
+#define DEFAULT_HOMING_SQUARED_AXES bit(Y_AXIS)

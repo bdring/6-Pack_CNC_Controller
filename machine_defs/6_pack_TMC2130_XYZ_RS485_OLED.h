@@ -2,12 +2,12 @@
 // clang-format off
 
 /*
-    6_pack_TMC2130_XYYZ_10v_Spin_Mosfet_Laser.h
+    6_pack_TMC2130_XYYZ_RS485_mist.h
 
     Part of Grbl_ESP32
     Pin assignments for the ESP32 SPI 6-axis board
 
-    2021-06-06 B. Dring for Omar Abo-Namous
+    2021-08-24 B. Dring for Scott Carradice
 
     Grbl_ESP32 is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,7 +20,9 @@
     You should have received a copy of the GNU General Public License
     along with Grbl_ESP32.  If not, see <http://www.gnu.org/licenses/>.
 */
-#define MACHINE_NAME            "6 Pack TMC2130 XYYZ 10V spin FET Laser"
+#define MACHINE_NAME            "6 Pack TMC2130 XYZ RS485"
+
+#define DISPLAY_CODE_FILENAME "Custom/oled_basic.cpp"
 
 #define N_AXIS 3
 
@@ -33,8 +35,8 @@
 #define I2S_OUT_WS       GPIO_NUM_17
 #define I2S_OUT_DATA     GPIO_NUM_21
 
-#define TRINAMIC_RUN_MODE           Motors::TrinamicMode::StealthChop
-#define TRINAMIC_HOMING_MODE        Motors::TrinamicMode::StealthChop
+#define TRINAMIC_RUN_MODE           Motors::TrinamicMode::CoolStep
+#define TRINAMIC_HOMING_MODE        Motors::TrinamicMode::CoolStep
 
 // Motor Socket #1
 #define X_TRINAMIC_DRIVER       2130
@@ -53,19 +55,11 @@
 #define Y_RSENSE                X_RSENSE
 
 // Motor Socket #3
-#define Y2_TRINAMIC_DRIVER       X_TRINAMIC_DRIVER
-#define Y2_DISABLE_PIN           I2SO(8)
-#define Y2_DIRECTION_PIN         I2SO(9)
-#define Y2_STEP_PIN              I2SO(10)
-#define Y2_CS_PIN                I2SO(11)
-#define Y2_RSENSE                X_RSENSE
-
-// Motor Socket #4
 #define Z_TRINAMIC_DRIVER       X_TRINAMIC_DRIVER
-#define Z_DIRECTION_PIN         I2SO(12)
-#define Z_STEP_PIN              I2SO(13)
-#define Z_DISABLE_PIN           I2SO(15)
-#define Z_CS_PIN                I2SO(14)
+#define Z_DISABLE_PIN           I2SO(8)
+#define Z_DIRECTION_PIN         I2SO(9)
+#define Z_STEP_PIN              I2SO(10)
+#define Z_CS_PIN                I2SO(11)
 #define Z_RSENSE                X_RSENSE
 
 
@@ -114,29 +108,18 @@ Socket #5
 #define Z_LIMIT_PIN             GPIO_NUM_35
 #define PROBE_PIN               GPIO_NUM_34
 
+// RS485 Modbus In socket #3
+// https://github.com/bdring/6-Pack_CNC_Controller/wiki/RS485-Modbus-Module
+#define SPINDLE_TYPE             SpindleType::HUANYANG // default, check actual $Spindle/Type Setting
+#define VFD_RS485_TXD_PIN        GPIO_NUM_26
+#define VFD_RS485_RTS_PIN        GPIO_NUM_4
+#define VFD_RS485_RXD_PIN        GPIO_NUM_16
 
 
-// when used in socket #3
-// https://github.com/bdring/6-Pack_CNC_Controller/wiki/0-10V-Output-Module
-#define SPINDLE_TYPE            SpindleType::_10V// default, check actual $Spindle/Type Setting
-#define SPINDLE_OUTPUT_PIN      GPIO_NUM_26
-#define SPINDLE_FORWARD_PIN     GPIO_NUM_4
-#define SPINDLE_REVERSE_PIN     GPIO_NUM_16
 
-
-// Socket #4
-// https://github.com/bdring/6-Pack_CNC_Controller/wiki/Quad-MOSFET-Module
-#define LASER_OUTPUT_PIN       GPIO_NUM_14
-#define COOLANT_FLOOD_PIN      GPIO_NUM_13
-#define USER_DIGITAL_PIN_0     GPIO_NUM_15 
-#define USER_ANALOG_PIN_0      GPIO_NUM_12 
-
-// Example (4x) 5V Buffer Output on socket #5
-// https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-5V-Buffered-Output-Module
-#define COOLANT_MIST_PIN      I2SO(24) 
-#define USER_DIGITAL_PIN_1    I2SO(25)
-#define USER_DIGITAL_PIN_2    I2SO(26)
-#define USER_DIGITAL_PIN_3    I2SO(27)
+// https://github.com/bdring/6-Pack_CNC_Controller/wiki/Relay-Module
+// Relay module as Mist on CNC I/O Module socket #4
+#define COOLANT_MIST_PIN  GPIO_NUM_14 // Relay for Mist on module socket #4
 
 
 // === Default settings
