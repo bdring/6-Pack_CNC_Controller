@@ -2,8 +2,8 @@ board: 6 Pack
 name: 6 Pack Dynamixel XYZ
 meta:
 stepping:
-  engine: I2S_STREAM
-  idle_ms: 250
+  engine: RMT
+  idle_ms: 255
   pulse_us: 4
   dir_delay_us: 1
   disable_delay_us: 0
@@ -41,12 +41,13 @@ axes:
       dynamixel2:
         id: 1
         uart:
-          txd_pin: gpio.13
-          rxd_pin: gpio.14
-          rts_pin: gpio.15
+          txd_pin: gpio.16
+          rxd_pin: gpio.26
+          rts_pin: gpio.4
           baud: 1000000
           mode: 8N1
-        
+        count_min: 1024
+        count_max: 3072
 
   y:
     steps_per_mm: 100.000
@@ -56,7 +57,7 @@ axes:
     soft_limits: false
     homing:
       cycle: 2
-      positive_direction: true
+      positive_direction: false
       mpos_mm: 0.000
       feed_mm_per_min: 100.000
       seek_mm_per_min: 200.000
@@ -65,12 +66,14 @@ axes:
       feed_scaler: 1.100
 
     motor0:
-      limit_neg_pin: gpio.33
+      limit_neg_pin: NO_PIN
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm:1.000
       dynamixel2:
+        count_min: 1024
+        count_max: 3072
         id: 2
         
   z:
@@ -81,7 +84,7 @@ axes:
     soft_limits: false
     homing:
       cycle: 2
-      positive_direction: true
+      positive_direction: false
       mpos_mm: 0.000
       feed_mm_per_min: 100.000
       seek_mm_per_min: 200.000
@@ -90,18 +93,15 @@ axes:
       feed_scaler: 1.100
         
     motor0:
-      limit_neg_pin: gpio.32
+      limit_neg_pin: NO_PIN
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm:1.000
       dynamixel2:
+        count_min: 1024
+        count_max: 3072
         id: 3
-
-i2so:
-  bck_pin: gpio.22
-  data_pin: gpio.21
-  ws_pin: gpio.17
 
 spi:
   miso_pin: gpio.19
