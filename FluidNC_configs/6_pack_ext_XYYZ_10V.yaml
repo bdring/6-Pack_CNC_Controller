@@ -1,6 +1,6 @@
 board: 6 Pack
-name: 6 Pack External XYZA Laser
-meta: 2022-01-06 B. Dring for Samuel Keller
+name: 6 Pack External XYYZ 10V
+meta: 2022-02-08 B. Dring for Vitaly Gutkovich 311890
 stepping:
   engine: I2S_STREAM
   idle_ms: 250
@@ -13,11 +13,11 @@ axes:
   x:
     steps_per_mm: 100.000
     max_rate_mm_per_min: 5000.000
-    acceleration_mm_per_sec2: 50.000
+    acceleration_mm_per_sec2: 100.000
     max_travel_mm: 300.000
     soft_limits: false
     homing:
-      cycle: 1
+      cycle: 2
       positive_direction: false
       mpos_mm: 0.000
       feed_mm_per_min: 100.000
@@ -27,11 +27,11 @@ axes:
       feed_scaler: 1.100
 
     motor0:
-      limit_neg_pin: NO_PIN
+      limit_neg_pin: gpio.33
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
       hard_limits: false
-      pulloff_mm:1.000
+      pulloff_mm: 1.000
       standard_stepper:
         step_pin: I2SO.2
         direction_pin: I2SO.1
@@ -40,7 +40,7 @@ axes:
   y:
     steps_per_mm: 100.000
     max_rate_mm_per_min: 5000.000
-    acceleration_mm_per_sec2: 50.000
+    acceleration_mm_per_sec2: 100.000
     max_travel_mm: 300.000
     soft_limits: false
     homing:
@@ -54,66 +54,59 @@ axes:
       feed_scaler: 1.100
 
     motor0:
-      limit_neg_pin: NO_PIN
+      limit_neg_pin: gpio.32
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
       hard_limits: false
-      pulloff_mm:1.000
+      pulloff_mm: 1.000
       standard_stepper:
         step_pin: I2SO.5
         direction_pin: I2SO.4
         disable_pin: I2SO.7
-        
-  z:
-    steps_per_mm: 100.000
-    max_rate_mm_per_min: 5000.000
-    acceleration_mm_per_sec2: 200.000
-    max_travel_mm: 1000.000
-    soft_limits: false
-    homing:
-      cycle: 0
-      positive_direction: true
-      mpos_mm: 0.000
-      feed_mm_per_min: 100.000
-      seek_mm_per_min: 200.000
-      settle_ms: 500
-      seek_scaler: 1.100
-      feed_scaler: 1.100
-        
-    motor0:
+    
+    motor1:
       limit_neg_pin: NO_PIN
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
       hard_limits: false
-      pulloff_mm:1.000
-      null_motor:
-        
-  a:
-    steps_per_mm: 100.000
-    max_rate_mm_per_min: 5000.000
-    acceleration_mm_per_sec2: 50.000
-    max_travel_mm: 300.000
-    soft_limits: false
-    homing:
-      cycle: 3
-      positive_direction: true
-      mpos_mm: 0.000
-      feed_mm_per_min: 100.000
-      seek_mm_per_min: 200.000
-      settle_ms: 500
-      seek_scaler: 1.100
-      feed_scaler: 1.100
-        
-    motor0:
-      limit_neg_pin: NO_PIN
-      limit_pos_pin: NO_PIN
-      limit_all_pin: NO_PIN
-      hard_limits: false
-      pulloff_mm:1.000
+      pulloff_mm: 1.000
       standard_stepper:
         step_pin: I2SO.10
         direction_pin: I2SO.9
         disable_pin: I2SO.8
+
+  z:
+    steps_per_mm: 100.000
+    max_rate_mm_per_min: 5000.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 1
+      positive_direction: true
+      mpos_mm: 0.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 800.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: gpio.35
+      limit_pos_pin: NO_PIN
+      limit_all_pin: NO_PIN
+      hard_limits: false
+      pulloff_mm: 1.000
+      standard_stepper:
+        step_pin: I2SO.13
+        direction_pin: I2SO.12
+        disable_pin: I2SO.15
+        
+probe:
+  pin: gpio.34
+  check_mode_start: true
+  
+        
 
 i2so:
   bck_pin: gpio.22
@@ -129,12 +122,25 @@ sdcard:
   card_detect_pin: NO_PIN
   cs_pin: gpio.5
 
-Laser:
-  pwm_hz: 5000
-  output_pin: gpio.14
-  enable_pin: gpio.13
-  disable_with_s0: false
-  s0_with_disable: true
-  tool_num: 100
-  speed_map: 0=0.000% 255=100.000%
+control:
+  safety_door_pin: NO_PIN
+  reset_pin: NO_PIN
+  feed_hold_pin: NO_PIN
+  cycle_start_pin: NO_PIN
+  macro0_pin: NO_PIN
+  macro1_pin: NO_PIN
+  macro2_pin: NO_PIN
+  macro3_pin: NO_PIN
+
+start:
+  must_home: false
+
+10V:
+  output_pin: gpio.26
+  forward_pin: gpio.4
+  reverse_pin: gpio.16
+  spinup_ms: 0
+  spindown_ms: 0
+  tool_num: 0
+  speed_map: 0=0% 0=25% 6000=25% 24000=100%
   

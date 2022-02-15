@@ -1,6 +1,6 @@
 board: 6 Pack
-name: 6 Pack StepStick XXYYZ Relay Laser
-meta: 12/31/2021 B. Dring for Alexander Pont
+name: 6 Pack StepStick XXYYZ Relay
+meta: 2022-02-09 B. Dring for Travis Pickle 311661
 stepping:
   engine: I2S_STREAM
   idle_ms: 250
@@ -27,25 +27,47 @@ axes:
       feed_scaler: 1.100
 
     motor0:
-      limit_neg_pin: NO_PIN
+      limit_neg_pin: gpio.33
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm:1.000
-      stepstick:
-        ms3_pin: i2so.3
+      tmc_2130:
+        cs_pin: i2so.3
+        run_amps: 0.50
+        hold_amps: 0.20
+        microsteps: 16
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        use_enable: false
         step_pin: I2SO.2
         direction_pin: I2SO.1
         disable_pin: I2SO.0
         
     motor1:
-      limit_neg_pin: NO_PIN
+      limit_neg_pin: gpio.32
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm:1.000
-      stepstick:
-        ms3_pin: i2so.6
+      tmc_2130:
+        cs_pin: i2so.6
+        run_amps: 0.50
+        hold_amps: 0.20
+        microsteps: 16
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        use_enable: false
         step_pin: I2SO.5
         direction_pin: I2SO.4
         disable_pin: I2SO.7
@@ -67,25 +89,47 @@ axes:
       feed_scaler: 1.100
 
     motor0:
-      limit_neg_pin: NO_PIN
+      limit_neg_pin: gpio.35
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm:1.000
-      stepstick:
-        ms3_pin: i2so.11
+      tmc_2130:
+        cs_pin: i2so.11
+        run_amps: 0.50
+        hold_amps: 0.20
+        microsteps: 16
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        use_enable: false
         step_pin: I2SO.10
         direction_pin: I2SO.9
         disable_pin: I2SO.8
         
     motor1:
-      limit_neg_pin: NO_PIN
+      limit_neg_pin: gpio.34
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm: 3.000
-      stepstick:
-        ms3_pin: i2so.14
+      tmc_2130:
+        cs_pin: i2so.14
+        run_amps: 0.50
+        hold_amps: 0.20
+        microsteps: 16
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        use_enable: false
         step_pin: I2SO.13
         direction_pin: I2SO.12
         disable_pin: I2SO.15
@@ -112,8 +156,19 @@ axes:
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm: 3.000
-      stepstick:
-        ms3_pin: i2so.19
+      tmc_2130:
+        cs_pin: i2so.19
+        run_amps: 0.50
+        hold_amps: 0.20
+        microsteps: 16
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        use_enable: false
         step_pin: I2SO.18
         direction_pin: I2SO.17
         disable_pin: I2SO.16
@@ -135,22 +190,23 @@ sdcard:
 control:
   safety_door_pin: NO_PIN
   reset_pin: NO_PIN
-  feed_hold_pin: gpio.39
-  cycle_start_pin: gpio.25
+  feed_hold_pin: NO_PIN
+  cycle_start_pin: NO_PIN
   macro0_pin: NO_PIN
   macro1_pin: NO_PIN
   macro2_pin: NO_PIN
   macro3_pin: NO_PIN
 
 probe:
-  pin: gpio.36
+  pin: gpio.25
   check_mode_start: true
 
 start:
   must_home: false
   
+  
 relay:
-  output_pin: gpio.14
+  output_pin: gpio.26
   enable_pin: NO_PIN
   direction_pin: NO_PIN
   disable_with_s0: false
@@ -159,13 +215,4 @@ relay:
   spindown_ms: 0
   tool_num: 0
   speed_map: 0=0.000% 0=100.000% 1=100%
-  
-Laser:
-  pwm_hz: 5000
-  output_pin: gpio.26
-  enable_pin: gpio.4
-  disable_with_s0: false
-  s0_with_disable: true
-  tool_num: 1
-  speed_map: 0=0.000% 255=100.000%
   
