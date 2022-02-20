@@ -111,8 +111,8 @@ axes:
         disable_pin: I2SO.8
 
   z:
-    steps_per_mm: 188.976
-    max_rate_mm_per_min: 500.000
+    steps_per_mm: 800.000
+    max_rate_mm_per_min: 5000.000
     acceleration_mm_per_sec2: 100.000
     max_travel_mm: 300.000
     soft_limits: false
@@ -120,8 +120,8 @@ axes:
       cycle: 1
       positive_direction: true
       mpos_mm: 150.000
-      feed_mm_per_min: 200.000
-      seek_mm_per_min: 400.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 800.000
       settle_ms: 500
       seek_scaler: 1.100
       feed_scaler: 1.100
@@ -136,7 +136,7 @@ axes:
         cs_pin: i2so.14
         run_amps: 0.50
         hold_amps: 0.20
-        microsteps: 2
+        microsteps: 16
         stallguard: 0
         stallguard_debug: false
         toff_disable: 0

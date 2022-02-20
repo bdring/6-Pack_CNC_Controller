@@ -171,18 +171,18 @@ macros:
   macro3:
 
 user_outputs:
-  analog0_pin: NO_PIN
-  analog1_pin: NO_PIN
-  analog2_pin: NO_PIN
-  analog3_pin: NO_PIN
+  analog0: NO_PIN
+  analog1: NO_PIN
+  analog2: NO_PIN
+  analog3: NO_PIN
   analog_frequency0: 5000
   analog_frequency1: 5000
   analog_frequency2: 5000
   analog_frequency3: 5000
-  digital0_pin: NO_PIN
-  digital1_pin: NO_PIN
-  digital2_pin: NO_PIN
-  digital3_pin: NO_PIN
+  digital0: NO_PIN
+  digital1: NO_PIN
+  digital2: NO_PIN
+  digital3: NO_PIN
 
 software_debounce_ms: 0
 laser_mode: false
