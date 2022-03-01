@@ -1,0 +1,160 @@
+board: 6 Pack
+name: 6 Pack External XYYZ Huany
+meta: 2022-02-18 B. Dring for Brian Sibley 313718
+stepping:
+  engine: I2S_STREAM
+  idle_ms: 250
+  pulse_us: 4
+  dir_delay_us: 1
+  disable_delay_us: 0
+
+axes:
+  shared_stepper_disable_pin: NO_PIN
+  x:
+    steps_per_mm: 100.000
+    max_rate_mm_per_min: 5000.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 2
+      positive_direction: false
+      mpos_mm: 0.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 200.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: gpio.33
+      limit_pos_pin: NO_PIN
+      limit_all_pin: NO_PIN
+      hard_limits: false
+      pulloff_mm: 1.000
+      standard_stepper:
+        step_pin: I2SO.2
+        direction_pin: I2SO.1
+        disable_pin: I2SO.0
+
+  y:
+    steps_per_mm: 100.000
+    max_rate_mm_per_min: 5000.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 3
+      positive_direction: true
+      mpos_mm: 0.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 200.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: NO_PIN
+      limit_pos_pin: gpio.32
+      limit_all_pin: NO_PIN
+      hard_limits: false
+      pulloff_mm: 1.000
+      standard_stepper:
+        step_pin: I2SO.5
+        direction_pin: I2SO.4
+        disable_pin: I2SO.7
+    
+    motor1:
+      limit_neg_pin: NO_PIN
+      limit_pos_pin: NO_PIN
+      limit_all_pin: NO_PIN
+      hard_limits: false
+      pulloff_mm: 1.000
+      standard_stepper:
+        step_pin: I2SO.10
+        direction_pin: I2SO.9
+        disable_pin: I2SO.8
+
+  z:
+    steps_per_mm: 100.000
+    max_rate_mm_per_min: 5000.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 1
+      positive_direction: true
+      mpos_mm: 0.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 800.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: NO_PIN
+      limit_pos_pin: gpio.35
+      limit_all_pin: NO_PIN
+      hard_limits: false
+      pulloff_mm: 1.000
+      standard_stepper:
+        step_pin: I2SO.13
+        direction_pin: I2SO.12
+        disable_pin: I2SO.15
+        
+probe:
+  pin: NO_PIN
+  check_mode_start: true
+  
+        
+i2so:
+  bck_pin: gpio.22
+  data_pin: gpio.21
+  ws_pin: gpio.17
+
+spi:
+  miso_pin: gpio.19
+  mosi_pin: gpio.23
+  sck_pin: gpio.18
+
+sdcard:
+  card_detect_pin: NO_PIN
+  cs_pin: gpio.5
+
+control:
+  safety_door_pin: NO_PIN
+  reset_pin: NO_PIN
+  feed_hold_pin: NO_PIN
+  cycle_start_pin: NO_PIN
+  macro0_pin: NO_PIN
+  macro1_pin: NO_PIN
+  macro2_pin: NO_PIN
+  macro3_pin: NO_PIN
+
+start:
+  must_home: false
+  
+coolant:
+  flood_pin: gpio.15
+  mist_pin: gpio.12
+  delay_ms: 0
+  
+Huanyang:
+  uart:
+    txd_pin: gpio.26
+    rxd_pin: gpio.16
+    rts_pin: gpio.4
+    baud: 9600
+    mode: 8N1
+  modbus_id: 1
+  tool_num: 0
+  speed_map: 0=0% 0=25% 6000=25% 24000=100%
+  
+Laser:
+  pwm_hz: 5000
+  output_pin: gpio.14
+  enable_pin: gpio.13
+  disable_with_s0: false
+  s0_with_disable: true
+  tool_num: 1
+  speed_map: 0=0.000% 255=100.000%
