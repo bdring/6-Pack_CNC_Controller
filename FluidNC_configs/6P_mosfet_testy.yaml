@@ -1,0 +1,50 @@
+board: 6 Pack
+name: 6 Pack External XYZAB
+meta: 2022-03-227 B. Dring for Nicholas Zivkovic 319639
+stepping:
+  engine: I2S_STREAM
+  idle_ms: 250
+  pulse_us: 4
+  dir_delay_us: 1
+  disable_delay_us: 0
+
+axes:
+  shared_stepper_disable_pin: NO_PIN
+  x:
+
+  y:
+    
+  z:
+
+i2so:
+  bck_pin: gpio.22
+  data_pin: gpio.21
+  ws_pin: gpio.17
+
+spi:
+  miso_pin: gpio.19
+  mosi_pin: gpio.23
+  sck_pin: gpio.18
+
+sdcard:
+  card_detect_pin: NO_PIN
+  cs_pin: gpio.5
+  
+user_outputs:
+  analog0_pin: gpio.4
+  analog1_pin: NO_PIN
+  analog2_pin: NO_PIN
+  analog3_pin: NO_PIN
+  analog0_hz: 5000
+  analog1_hz: 5000
+  analog2_hz: 5000
+  analog3_hz: 5000
+  digital0_pin: gpio.16
+  digital1_pin: gpio.27
+  
+  
+pwm:
+  output_pin: gpio.26
+
+  
+

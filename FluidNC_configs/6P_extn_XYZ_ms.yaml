@@ -1,6 +1,7 @@
 board: 6 Pack
-name: 6 Pack External XYZAB
-meta: 2022-03-227 B. Dring for Nicholas Zivkovic 319639
+name: 6 Pack External XYZ
+meta: 2022-03-28 B. Dring for Michael Schneeloch 320105
+
 stepping:
   engine: I2S_STREAM
   idle_ms: 250
@@ -17,8 +18,8 @@ axes:
     max_travel_mm: 300.000
     soft_limits: false
     homing:
-      cycle: 1
-      positive_direction: true
+      cycle: 2
+      positive_direction: false
       mpos_mm: 0.000
       feed_mm_per_min: 100.000
       seek_mm_per_min: 200.000
@@ -27,12 +28,13 @@ axes:
       feed_scaler: 1.100
 
     motor0:
-      limit_neg_pin: gpio.33:low
-      limit_pos_pin: gpio.32:low
+      limit_neg_pin: gpio.33
+      limit_pos_pin: gpio.32
       limit_all_pin: NO_PIN
-      hard_limits: true
+      hard_limits: false
       pulloff_mm:1.000
-      standard_stepper:
+      stepstick:
+        ms3_pin: i2so.3
         step_pin: I2SO.2
         direction_pin: I2SO.1
         disable_pin: I2SO.0
@@ -54,12 +56,13 @@ axes:
       feed_scaler: 1.100
 
     motor0:
-      limit_neg_pin: gpio.35:low
-      limit_pos_pin: gpio.34:low
+      limit_neg_pin: gpio.35
+      limit_pos_pin: gpio.34
       limit_all_pin: NO_PIN
-      hard_limits: true
+      hard_limits: false
       pulloff_mm:1.000
-      standard_stepper:
+      stepstick:
+        ms3_pin: i2so.6
         step_pin: I2SO.5
         direction_pin: I2SO.4
         disable_pin: I2SO.7
@@ -67,35 +70,11 @@ axes:
   z:
     steps_per_mm: 100.000
     max_rate_mm_per_min: 5000.000
-    acceleration_mm_per_sec2: 200.000
-    max_travel_mm: 1000.000
-    soft_limits: false
-    homing:
-      cycle: 0
-      positive_direction: true
-      mpos_mm: 0.000
-      feed_mm_per_min: 100.000
-      seek_mm_per_min: 200.000
-      settle_ms: 500
-      seek_scaler: 1.100
-      feed_scaler: 1.100
-        
-    motor0:
-      limit_neg_pin: gpio.39:low
-      limit_pos_pin: gpio.36:low
-      limit_all_pin: NO_PIN
-      hard_limits: true
-      pulloff_mm:1.000
-      null_motor:
-        
-  a:
-    steps_per_mm: 100.000
-    max_rate_mm_per_min: 5000.000
     acceleration_mm_per_sec2: 50.000
     max_travel_mm: 300.000
     soft_limits: false
     homing:
-      cycle: 3
+      cycle: 2
       positive_direction: true
       mpos_mm: 0.000
       feed_mm_per_min: 100.000
@@ -105,8 +84,8 @@ axes:
       feed_scaler: 1.100
         
     motor0:
-      limit_neg_pin: NO_PIN
-      limit_pos_pin: NO_PIN
+      limit_neg_pin: gpio.2
+      limit_pos_pin: gpio.25
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm:1.000
@@ -115,32 +94,14 @@ axes:
         direction_pin: I2SO.9
         disable_pin: I2SO.8
         
-  b:
-    steps_per_mm: 100.000
-    max_rate_mm_per_min: 5000.000
-    acceleration_mm_per_sec2: 50.000
-    max_travel_mm: 300.000
-    soft_limits: false
-    homing:
-      cycle: 3
-      positive_direction: true
-      mpos_mm: 0.000
-      feed_mm_per_min: 100.000
-      seek_mm_per_min: 200.000
-      settle_ms: 500
-      seek_scaler: 1.100
-      feed_scaler: 1.100
-        
-    motor0:
-      limit_neg_pin: NO_PIN
-      limit_pos_pin: NO_PIN
-      limit_all_pin: NO_PIN
-      hard_limits: false
-      pulloff_mm:1.000
-      standard_stepper:
-        step_pin: I2SO.13
-        direction_pin: I2SO.12
-        disable_pin: I2SO.15
+coolant:
+  flood_pin: gpio.26
+  mist_pin: gpio.4
+  delay_ms: 0
+  
+user_outputs:
+  digital0_pin: gpio.16
+  digital1_pin: gpio.27
 
 i2so:
   bck_pin: gpio.22
@@ -155,8 +116,4 @@ spi:
 sdcard:
   card_detect_pin: NO_PIN
   cs_pin: gpio.5
-  
-  
-laser:
-  
 
