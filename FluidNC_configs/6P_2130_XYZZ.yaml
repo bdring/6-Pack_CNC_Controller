@@ -178,7 +178,7 @@ control:
 coolant:
   flood_pin: gpio.26
   mist_pin: gpio.4
-  delay_ms: 0  
+  delay_ms: 0
   
 user_outputs:
   analog0_pin: gpio.27
