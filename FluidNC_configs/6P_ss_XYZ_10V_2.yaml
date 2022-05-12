@@ -8,6 +8,11 @@ stepping:
   pulse_us: 4
   dir_delay_us: 1
   disable_delay_us: 0
+  
+start:
+  must_home: true
+  deactivate_parking: false
+  check_limits: true
 
 axes:
   shared_stepper_disable_pin: NO_PIN
@@ -99,8 +104,8 @@ probe:
   check_mode_start: true
   
 coolant:
-  flood_pin: gpio.14
-  mist_pin: NO_PIN
+  flood_pin: gpio.2
+  mist_pin: gpio.14
   delay_ms: 0
 
 i2so:

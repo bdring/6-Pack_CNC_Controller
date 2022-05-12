@@ -1,6 +1,7 @@
 board: 6 Pack
 name: 6 Pack StepStick XYZ
 meta: 2022-02-04 Gary Mauler 310994
+
 stepping:
   engine: I2S_STREAM
   idle_ms: 250
