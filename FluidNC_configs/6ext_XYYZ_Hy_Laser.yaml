@@ -1,6 +1,6 @@
-board: 6 Pack
-name: 6 Pack External XYZ Relay
-meta: 2022-04-16 B. Dring
+board: 6 Pack External
+name: 6ext XYYZ 10V Hy
+meta: 2022-06-08 B. Dring for Steven McLenachen 331876
 
 stepping:
   engine: I2S_STREAM
@@ -14,7 +14,7 @@ axes:
   x:
     steps_per_mm: 100.000
     max_rate_mm_per_min: 5000.000
-    acceleration_mm_per_sec2: 50.000
+    acceleration_mm_per_sec2: 100.000
     max_travel_mm: 300.000
     soft_limits: false
     homing:
@@ -28,13 +28,10 @@ axes:
       feed_scaler: 1.100
 
     motor0:
-      limit_neg_pin: gpio.33:low
-      limit_pos_pin: gpio.32:low
-      limit_all_pin: NO_PIN
+      limit_neg_pin: gpio.34:low
       hard_limits: false
-      pulloff_mm:1.000
-      stepstick:
-        ms3_pin: i2so.3
+      pulloff_mm: 1.000
+      standard_stepper:
         step_pin: I2SO.2
         direction_pin: I2SO.1
         disable_pin: I2SO.0
@@ -42,7 +39,7 @@ axes:
   y:
     steps_per_mm: 100.000
     max_rate_mm_per_min: 5000.000
-    acceleration_mm_per_sec2: 50.000
+    acceleration_mm_per_sec2: 100.000
     max_travel_mm: 300.000
     soft_limits: false
     homing:
@@ -57,42 +54,48 @@ axes:
 
     motor0:
       limit_neg_pin: gpio.35:low
-      limit_pos_pin: gpio.34:low
-      limit_all_pin: NO_PIN
       hard_limits: false
-      pulloff_mm:1.000
-      stepstick:
-        ms3_pin: i2so.6
+      pulloff_mm: 1.000
+      standard_stepper:
         step_pin: I2SO.5
         direction_pin: I2SO.4
         disable_pin: I2SO.7
-        
-  z:
-    steps_per_mm: 100.000
-    max_rate_mm_per_min: 5000.000
-    acceleration_mm_per_sec2: 50.000
-    max_travel_mm: 300.000
-    soft_limits: false
-    homing:
-      cycle: 2
-      positive_direction: true
-      mpos_mm: 0.000
-      feed_mm_per_min: 100.000
-      seek_mm_per_min: 200.000
-      settle_ms: 500
-      seek_scaler: 1.100
-      feed_scaler: 1.100
-        
-    motor0:
-      limit_neg_pin: NO_PIN
-      limit_pos_pin: NO_PIN
-      limit_all_pin: NO_PIN
+    
+    motor1:
+      limit_neg_pin: gpio.32:low
       hard_limits: false
-      pulloff_mm:1.000
+      pulloff_mm: 1.000
       standard_stepper:
         step_pin: I2SO.10
         direction_pin: I2SO.9
         disable_pin: I2SO.8
+
+  z:
+    steps_per_mm: 100.000
+    max_rate_mm_per_min: 5000.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 1
+      positive_direction: true
+      mpos_mm: 0.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 800.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_pos_pin: gpio.33:low
+      hard_limits: false
+      pulloff_mm: 1.000
+      standard_stepper:
+        step_pin: I2SO.13
+        direction_pin: I2SO.12
+        disable_pin: I2SO.15
+        
+        
 
 i2so:
   bck_pin: gpio.22
@@ -107,14 +110,47 @@ spi:
 sdcard:
   card_detect_pin: NO_PIN
   cs_pin: gpio.5
+  
+coolant:
+  flood_pin: gpio.26
+  mist_pin: gpio.4
+  delay_ms: 0
 
-relay:
-  direction_pin: NO_PIN
-  output_pin: gpio.26
-  enable_pin: NO_PIN
+control:
+  safety_door_pin: NO_PIN
+  reset_pin: NO_PIN
+  feed_hold_pin: gpio.39:low
+  cycle_start_pin: NO_PIN
+  macro0_pin: NO_PIN
+  macro1_pin: NO_PIN
+  macro2_pin: NO_PIN
+  macro3_pin: NO_PIN
+  
+probe:
+  pin: gpio.36:low
+  check_mode_start: true
+  
+
+start:
+  must_home: false
+
+Laser:
+  pwm_hz: 10000
+  output_pin: gpio.25
+  enable_pin: gpio.2
   disable_with_s0: false
   s0_with_disable: true
-  spinup_ms: 0
-  spindown_ms: 0
   tool_num: 0
-  speed_map: 0=0.000% 0=100.000% 1=100.000%
+  speed_map: 0=0.000% 255=100.000%
+
+Huanyang:
+  uart:
+    txd_pin: gpio.14
+    rxd_pin: gpio.15
+    rts_pin: gpio.13
+    baud: 9600
+    mode: 8N1
+  modbus_id: 1
+  tool_num: 1
+  speed_map: 0=0% 0=25% 6000=25% 24000=100%
+  

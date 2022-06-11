@@ -7,6 +7,9 @@ stepping:
   pulse_us: 4
   dir_delay_us: 1
   disable_delay_us: 0
+  
+kinematics:
+  corexy:
 
 axes:
   shared_stepper_disable_pin: NO_PIN
