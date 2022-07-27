@@ -1,0 +1,222 @@
+board: 6 Pack
+name: TMC2130 XXYYZ 5v Laser Mist
+meta: 07/27/2022 B. Dring for Andy Cart
+
+kinematics:
+  Cartesian:
+
+stepping:
+  engine: I2S_Static
+  idle_ms: 250
+  dir_delay_us: 0
+  pulse_us: 4
+  disable_delay_us: 0
+
+axes:
+  x:
+    steps_per_mm: 100.000
+    max_rate_mm_per_min: 1000.000
+    acceleration_mm_per_sec2: 200.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 2
+      mpos_mm: 0.000
+      positive_direction: true
+      settle_ms: 250.000
+      seek_mm_per_min: 2000.000
+      feed_mm_per_min: 200.000
+      seek_scaler: 1.100
+      feed_scaler: 5.000
+    motor0:
+      limit_all_pin: gpio.33
+      hard_limits: false
+      #socket 1
+      tmc_2130:
+        cs_pin: i2so.3
+        step_pin: I2SO.2
+        direction_pin: I2SO.1
+        disable_pin: I2SO.0
+        spi_index: -1
+        r_sense_ohms: 0.110
+        run_amps: 0.750
+        hold_amps: 0.250
+        microsteps: 32
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        use_enable: false
+    motor1:
+      null_motor:
+  y:
+    steps_per_mm: 100.000
+    max_rate_mm_per_min: 1000.000
+    acceleration_mm_per_sec2: 200.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 2
+      mpos_mm: 0.000
+      positive_direction: true
+      settle_ms: 250.000
+      seek_mm_per_min: 2000.000
+      feed_mm_per_min: 200.000
+      seek_scaler: 1.100
+      feed_scaler: 5.000
+    motor0:
+      limit_all_pin: gpio.32
+      hard_limits: false
+      #socket 2
+      tmc_2130:
+        cs_pin: i2so.6
+        step_pin: I2SO.5
+        direction_pin: I2SO.4
+        disable_pin: I2SO.7
+        spi_index: -1
+        r_sense_ohms: 0.110
+        run_amps: 0.750
+        hold_amps: 0.250
+        microsteps: 32
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        use_enable: false
+    motor1:
+      limit_all_pin: gpio.35
+      hard_limits: false
+      #socket 3
+      tmc_2130:
+        cs_pin: i2so.11
+        step_pin: I2SO.10
+        direction_pin: I2SO.9
+        disable_pin: I2SO.8
+        spi_index: -1
+        r_sense_ohms: 0.110
+        run_amps: 0.750
+        hold_amps: 0.250
+        microsteps: 32
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        use_enable: false
+  z:
+    steps_per_mm: 100.000
+    max_rate_mm_per_min: 1000.000
+    acceleration_mm_per_sec2: 200.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 1
+      mpos_mm: 0.000
+      positive_direction: false
+      settle_ms: 250.000
+      seek_mm_per_min: 2000.000
+      feed_mm_per_min: 200.000
+      seek_scaler: 1.100
+      feed_scaler: 5.000
+    motor0:
+      limit_all_pin: gpio.34
+      hard_limits: false
+      #socket #4
+      tmc_2130:
+        cs_pin: i2so.14
+        step_pin: I2SO.13
+        direction_pin: I2SO.12
+        disable_pin: I2SO.15
+        spi_index: -1
+        r_sense_ohms: 0.110
+        run_amps: 0.750
+        hold_amps: 0.250
+        microsteps: 32
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        use_enable: false
+    motor1:    
+    #socket #5
+      tmc_2130:
+        cs_pin: i2so.19
+        step_pin: I2SO.18
+        direction_pin: I2SO.17
+        disable_pin: I2SO.16
+        spi_index: -1
+        r_sense_ohms: 0.110
+        run_amps: 0.750
+        hold_amps: 0.250
+        microsteps: 32
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: CoolStep
+        homing_mode: CoolStep
+        use_enable: false
+
+i2so:
+  bck_pin: gpio.22
+  data_pin: gpio.21
+  ws_pin: gpio.17
+
+spi:
+  miso_pin: gpio.19
+  mosi_pin: gpio.23
+  sck_pin: gpio.18
+
+sdcard:
+  cs_pin: gpio.5
+
+control:
+
+coolant:
+  mist_pin: gpio.14
+  delay_ms: 1000.000
+
+probe:
+  check_mode_start: false
+
+macros:
+  startup_line0: 
+  startup_line1: 
+  macro0: 
+  macro1: 
+  macro2: 
+  macro3: 
+
+start:
+  must_home: true
+  check_limits: true
+  deactivate_parking: false
+
+user_outputs:
+
+laser:
+  tool_num: 0
+  speed_map: 0=0.0% 1000=100.0%
+  output_pin: gpio.26
+  enable_pin: gpio.4
+  disable_with_s0: false
+  s0_with_disable: false
+  pwm_hz: 5000
+arc_tolerance_mm: 0.002
+junction_deviation_mm: 0.010
+verbose_errors: false
+report_inches: false
+enable_parking_override_control: false
+use_line_numbers: false
