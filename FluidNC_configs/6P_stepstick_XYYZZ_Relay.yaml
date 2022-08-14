@@ -1,0 +1,129 @@
+board: 6 Pack
+name: Stepstick XXYYZ Relay
+meta: 08/03/2022 B. Dring for Kaden Patrick 340483
+
+kinematics:
+  Cartesian:
+
+stepping:
+  engine: I2S_Static
+  idle_ms: 255
+  dir_delay_us: 0
+  pulse_us: 4
+  disable_delay_us: 0
+
+axes:
+  x:
+    steps_per_mm: 100.000
+    max_rate_mm_per_min: 1000.000
+    acceleration_mm_per_sec2: 200.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 2
+      mpos_mm: 0.000
+      positive_direction: true
+      settle_ms: 250.000
+      seek_mm_per_min: 2000.000
+      feed_mm_per_min: 200.000
+      seek_scaler: 1.100
+      feed_scaler: 2.000
+    motor0:
+      limit_all_pin: gpio.33
+      hard_limits: false
+      #socket 1
+      stepstick:
+        step_pin: I2SO.2
+        direction_pin: I2SO.1
+        disable_pin: I2SO.0
+    motor1:
+      null_motor:
+  y:
+    steps_per_mm: 100.000
+    max_rate_mm_per_min: 1000.000
+    acceleration_mm_per_sec2: 200.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 2
+      mpos_mm: 0.000
+      positive_direction: true
+      settle_ms: 250.000
+      seek_mm_per_min: 2000.000
+      feed_mm_per_min: 200.000
+      seek_scaler: 1.100
+      feed_scaler: 2.000
+    motor0:
+      limit_all_pin: gpio.32
+      hard_limits: false
+      #socket 2
+      stepstick:
+        step_pin: I2SO.5
+        direction_pin: I2SO.4
+        disable_pin: I2SO.7
+    motor1:
+      limit_all_pin: gpio.35
+      hard_limits: false
+      #socket 3
+      stepstick:
+        step_pin: I2SO.10
+        direction_pin: I2SO.9
+        disable_pin: I2SO.8
+  z:
+    steps_per_mm: 100.000
+    max_rate_mm_per_min: 1000.000
+    acceleration_mm_per_sec2: 200.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 1
+      mpos_mm: 0.000
+      positive_direction: false
+      settle_ms: 250.000
+      seek_mm_per_min: 2000.000
+      feed_mm_per_min: 200.000
+      seek_scaler: 1.100
+      feed_scaler: 2.000
+    motor0:
+      limit_all_pin: gpio.34
+      hard_limits: false
+      #socket #4
+      stepstick:
+        step_pin: I2SO.13
+        direction_pin: I2SO.12
+        disable_pin: I2SO.15
+    motor1:    
+    #socket #5
+      stepstick:
+        step_pin: I2SO.18
+        direction_pin: I2SO.17
+        disable_pin: I2SO.16
+
+i2so:
+  bck_pin: gpio.22
+  data_pin: gpio.21
+  ws_pin: gpio.17
+
+spi:
+  miso_pin: gpio.19
+  mosi_pin: gpio.23
+  sck_pin: gpio.18
+
+sdcard:
+  cs_pin: gpio.5
+
+start:
+  must_home: true
+  check_limits: true
+  deactivate_parking: false
+
+relay:
+  direction_pin: NO_PIN
+  output_pin: gpio.26
+  enable_pin: NO_PIN
+  disable_with_s0: false
+  s0_with_disable: true
+  spinup_ms: 0
+  spindown_ms: 0
+  tool_num: 0
+  speed_map: 0=0.000% 0=100.000% 1=100.000%
