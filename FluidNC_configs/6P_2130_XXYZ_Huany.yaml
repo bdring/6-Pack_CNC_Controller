@@ -1,0 +1,197 @@
+board: 6 Pack
+name: 6 Pack 2130 XXYZ Huany
+meta: 2022-12-08 B. Dring for Mika Rauhala 360704
+
+stepping:
+  engine: I2S_STATIC
+  idle_ms: 255
+  pulse_us: 4
+  dir_delay_us: 1
+  disable_delay_us: 0
+
+axes:
+  shared_stepper_disable_pin: NO_PIN
+  x:
+    steps_per_mm: 800.000
+    max_rate_mm_per_min: 5000.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 2
+      positive_direction: false
+      mpos_mm: 150.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 200.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: gpio.33
+      limit_pos_pin: NO_PIN
+      limit_all_pin: NO_PIN
+      hard_limits: true
+      pulloff_mm: 1.000
+      tmc_2130:        
+        r_sense_ohms: 0.11
+        run_amps: 1.50
+        hold_amps: 0.60
+        microsteps: 16
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: Coolstep
+        homing_mode: Coolstep
+        use_enable: false
+        cs_pin: I2SO.3
+        step_pin: I2SO.2
+        direction_pin: I2SO.1
+        disable_pin: I2SO.0
+        
+    motor1:
+      limit_neg_pin: gpio.32
+      limit_pos_pin: NO_PIN
+      limit_all_pin: NO_PIN
+      hard_limits: false
+      pulloff_mm: 1.000
+      tmc_2130:        
+        r_sense_ohms: 0.11
+        run_amps: 1.50
+        hold_amps: 0.60
+        microsteps: 16
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: Coolstep
+        homing_mode: Coolstep
+        use_enable: false
+        cs_pin: I2SO.6
+        step_pin: I2SO.5
+        direction_pin: I2SO.4
+        disable_pin: I2SO.7
+
+  y:
+    steps_per_mm: 800.000
+    max_rate_mm_per_min: 5000.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 2
+      positive_direction: true
+      mpos_mm: 150.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 200.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: gpio.35
+      limit_pos_pin: NO_PIN
+      limit_all_pin: NO_PIN
+      hard_limits: false
+      pulloff_mm: 1.000
+      tmc_2130:        
+        r_sense_ohms: 0.11
+        run_amps: 1.50
+        hold_amps: 0.60
+        microsteps: 16
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: Coolstep
+        homing_mode: Coolstep
+        use_enable: false
+        cs_pin: I2SO.11
+        step_pin: I2SO.10
+        direction_pin: I2SO.9
+        disable_pin: I2SO.8
+
+  z:
+    steps_per_mm: 800.000
+    max_rate_mm_per_min: 5000.000
+    acceleration_mm_per_sec2: 100.000
+    max_travel_mm: 300.000
+    soft_limits: false
+    homing:
+      cycle: 1
+      positive_direction: true
+      mpos_mm: 150.000
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 800.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: NO_PIN
+      limit_pos_pin: NO_PIN
+      limit_all_pin: NO_PIN
+      hard_limits: false
+      pulloff_mm: 3.000
+      tmc_2130:        
+        r_sense_ohms: 0.11
+        run_amps: 1.50
+        hold_amps: 0.60
+        microsteps: 16
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: Coolstep
+        homing_mode: Coolstep
+        use_enable: false
+        cs_pin: i2so.14
+        step_pin: I2SO.13
+        direction_pin: I2SO.12
+        disable_pin: I2SO.15
+
+i2so:
+  bck_pin: gpio.22
+  data_pin: gpio.21
+  ws_pin: gpio.17
+
+spi:
+  miso_pin: gpio.19
+  mosi_pin: gpio.23
+  sck_pin: gpio.18
+
+sdcard:
+  card_detect_pin: NO_PIN
+  cs_pin: gpio.5
+
+probe:
+  pin: gpio.34
+  check_mode_start: true
+  
+# Use socket #3 for 5V or Relay module
+coolant:
+  flood_pin: gpio.26
+  mist_pin: NO_PIN
+  delay_ms: 0
+
+start:
+  must_home: true
+
+# RS485 in socket #4
+Huanyang:
+  uart:
+    txd_pin: gpio.14
+    rxd_pin: gpio.15
+    rts_pin: gpio.13
+    baud: 9600
+    mode: 8N1
+  modbus_id: 1
+  tool_num: 0
+  speed_map: 0=0% 0=25% 6000=25% 24000=100%
+
+
