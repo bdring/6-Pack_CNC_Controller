@@ -1,6 +1,6 @@
 board: 6 Pack
 name: 6 Pack StepStick XYZ
-meta: 2022-01-03 B. Dring for Ryan Snodgrass 312696
+meta: 2023-19-03 B. Dring
 stepping:
   engine: I2S_stream
   idle_ms: 255
@@ -11,9 +11,8 @@ stepping:
 
 axes:
   shared_stepper_disable_pin: NO_PIN
-  shared_stepper_reset_pin: NO_PIN
   x:
-    steps_per_mm: 800.000
+    steps_per_mm: 200.000
     max_rate_mm_per_min: 4000.000
     acceleration_mm_per_sec2: 80.000
     max_travel_mm: 180.000
@@ -30,7 +29,7 @@ axes:
       feed_scaler: 1.100
 
     motor0:
-      limit_neg_pin: gpio.33:pu
+      limit_neg_pin: NO_PIN
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
       hard_limits: true
@@ -45,7 +44,7 @@ axes:
         reset_pin: NO_PIN
 
   y:
-    steps_per_mm: 800.000
+    steps_per_mm: 200.000
     max_rate_mm_per_min: 4000.000
     acceleration_mm_per_sec2: 80.000
     max_travel_mm: 155.000
@@ -62,7 +61,7 @@ axes:
       feed_scaler: 1.100
 
     motor0:
-      limit_neg_pin: gpio.32:pu
+      limit_neg_pin: NO_PIN
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
       hard_limits: true
@@ -94,7 +93,7 @@ axes:
       feed_scaler: 1.100
 
     motor0:
-      limit_neg_pin: gpio.35
+      limit_neg_pin: NO_PIN
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
       hard_limits: false
@@ -103,9 +102,6 @@ axes:
         step_pin: I2SO.10
         direction_pin: I2SO.9
         disable_pin: I2SO.8
-
-kinematics:
-  Cartesian:
 
 i2so:
   bck_pin: gpio.22
@@ -121,51 +117,8 @@ sdcard:
   cs_pin: gpio.5
   card_detect_pin: NO_PIN
 
-control:
-  safety_door_pin: NO_PIN
-  reset_pin: NO_PIN
-  feed_hold_pin: NO_PIN
-  cycle_start_pin: NO_PIN
-  macro0_pin: NO_PIN
-  macro1_pin: NO_PIN
-  macro2_pin: NO_PIN
-  macro3_pin: NO_PIN
-
-coolant:
-  flood_pin: NO_PIN
-  mist_pin: NO_PIN
-  delay_ms: 0
-
-probe:
-  pin: gpio.34
-  check_mode_start: true
-
-macros:
-  startup_line0:
-  startup_line1:
-  macro0:
-  macro1:
-  macro2:
-  macro3:
-
 start:
-  must_home: true
-  deactivate_parking: false
-  check_limits: false
-
-user_outputs:
-  analog0_pin: NO_PIN
-  analog1_pin: NO_PIN
-  analog2_pin: NO_PIN
-  analog3_pin: NO_PIN
-  analog0_hz: 5000
-  analog1_hz: 5000
-  analog2_hz: 5000
-  analog3_hz: 5000
-  digital0_pin: NO_PIN
-  digital1_pin: NO_PIN
-  digital2_pin: NO_PIN
-  digital3_pin: NO_PIN
+  must_home: false
 
 arc_tolerance_mm: 0.002
 junction_deviation_mm: 0.010

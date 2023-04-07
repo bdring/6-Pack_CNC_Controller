@@ -1,6 +1,7 @@
 board: 6 Pack
-name: 6 Pack StepStick XYZ
-meta: 2022-02-22 B. Dring
+name: 6 Pack StepStick XYZ 10V
+meta: 2023-03-20 B. Dring for Michael Kessler 381029
+
 stepping:
   engine: I2S_STREAM
   idle_ms: 250
@@ -8,11 +9,10 @@ stepping:
   dir_delay_us: 1
   disable_delay_us: 0
   
-
 start:
-  must_home: false
+  must_home: true
   deactivate_parking: false
-  check_limits: false
+  check_limits: true
 
 axes:
   shared_stepper_disable_pin: NO_PIN
@@ -52,7 +52,7 @@ axes:
     soft_limits: false
     homing:
       cycle: 2
-      positive_direction: false
+      positive_direction: true
       mpos_mm: 0.000
       feed_mm_per_min: 100.000
       seek_mm_per_min: 200.000
@@ -61,10 +61,10 @@ axes:
       feed_scaler: 1.100
 
     motor0:
-      limit_neg_pin: gpio.32
-      limit_pos_pin: NO_PIN
+      limit_neg_pin: NO_PIN
+      limit_pos_pin: gpio.32
       limit_all_pin: NO_PIN
-      hard_limits: false
+      hard_limits: true
       pulloff_mm: 1.000
       stepstick:
         ms3_pin: i2so.6
@@ -100,8 +100,13 @@ axes:
         disable_pin: I2SO.8
         
 probe:
-  pin: gpio.34
+  pin: gpio.34:low
   check_mode_start: true
+  
+coolant:
+  flood_pin: gpio.13
+  mist_pin: gpio.14
+  delay_ms: 0
 
 i2so:
   bck_pin: gpio.22
@@ -116,16 +121,13 @@ spi:
 sdcard:
   card_detect_pin: NO_PIN
   cs_pin: gpio.5
-
-PWM:
-  pwm_hz: 5000
+  
+10V:
   output_pin: gpio.26
-  enable_pin: gpio.4
-  direction_pin: NO_PIN
-  disable_with_s0: false
-  s0_with_disable: true
-  spinup_ms: 5
-  spindown_ms: 3
+  forward_pin: gpio.4
+  reverse_pin: gpio.16
+  spinup_ms: 0
+  spindown_ms: 0
   tool_num: 0
-  speed_map: 0=0% 10000=100%
+  speed_map: 0=0% 6000=0% 24000=100%
 
