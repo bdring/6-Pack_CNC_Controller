@@ -1,18 +1,13 @@
 board: 6 Pack
 name: 6 Pack StepStick XYZ
-meta: 2022-02-22 B. Dring
+meta: 2023-19-03 B. Dring
 stepping:
-  engine: I2S_STREAM
-  idle_ms: 250
+  engine: I2S_stream
+  idle_ms: 255
   pulse_us: 4
   dir_delay_us: 1
   disable_delay_us: 0
-  
-
-start:
-  must_home: false
-  deactivate_parking: false
-  check_limits: false
+  segments: 12
 
 axes:
   shared_stepper_disable_pin: NO_PIN
@@ -103,6 +98,7 @@ probe:
   pin: gpio.34
   check_mode_start: true
 
+
 i2so:
   bck_pin: gpio.22
   data_pin: gpio.21
@@ -114,18 +110,28 @@ spi:
   sck_pin: gpio.18
 
 sdcard:
-  card_detect_pin: NO_PIN
   cs_pin: gpio.5
+  card_detect_pin: NO_PIN
 
-PWM:
-  pwm_hz: 5000
+start:
+  must_home: false
+  
+relay:
   output_pin: gpio.26
-  enable_pin: gpio.4
+  enable_pin: NO_PIN
   direction_pin: NO_PIN
   disable_with_s0: false
   s0_with_disable: true
-  spinup_ms: 5
-  spindown_ms: 3
-  tool_num: 0
-  speed_map: 0=0% 10000=100%
+  spinup_ms: 0
+  spindown_ms: 0
+  tool_num: 100
+  speed_map: 0=0.000% 0=100.000% 1=100%
 
+arc_tolerance_mm: 0.002
+junction_deviation_mm: 0.010
+verbose_errors: false
+report_inches: false
+enable_parking_override_control: false
+use_line_numbers: false
+planner_blocks: 16
+NoSpindle:
