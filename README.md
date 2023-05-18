@@ -8,6 +8,12 @@
 
 This is a fully modular CNC controller that runs Grbl_ESP32 firmware.
 
+### Current Source Files.
+
+The latest versions are [now on OSHLabs](https://oshwlab.com/bdring?tab=project&page=1) with the free version of EasyEDA. I did this to make it more accessible and easier to order.
+
+
+
 ### Features
 
 - ESP32 Sockets to fit both narrow and wide 2 x 19 pin types.
